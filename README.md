@@ -22,3 +22,4 @@ Robert Buj Gelonch, rbuj
   - Descomprimeix el fitxer zip
   - map
   - filter
+  - reduce
