@@ -43,24 +43,15 @@ const users = [
 /* print `findOne success` on the console */
 console.log('findOne success');
 /*
-  Call the async function `findOne`, with 2 arguments:
-  1st argument: the array of objects where we look for an item
-  2nd argument: the item to look for
-  The async function won't fail, so it will print the username because the
-  item already exists in the array
+  Run the async functions in parallel. The first promise won't fail because
+  the item exists in the array. In contrast, the second promise will fail
+  because the item doesn't exits.
 */
-findOne(users, { key: 'name', value: 'Carlos' });
+Promise.all([findOne(users, { key: 'name', value: 'Carlos' }),
+             findOne(users, { key: 'name', value: 'Fermin' })])
 
 /* print `findOne error` on the console */
 console.log('findOne error');
-/*
-  Call the async function `findOne`, with 2 arguments:
-  1st argument: the array of objects where we look for an item
-  2nd argument: the item to look for
-  The async function will fail, so it will print the error message because
-  the item doesn't exist in the array
-*/
-findOne(users, { key: 'name', value: 'Fermin' });
 
 /*
 findOne success
