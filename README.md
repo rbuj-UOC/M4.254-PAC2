@@ -13,3 +13,4 @@ Robert Buj Gelonch, rbuj
   - Descomprimeix el fitxer zip
   - Respon a la pregunta 2.a
   - Crea les carpetes i els fitxers necessaris
+  - Implementa la clase del model
