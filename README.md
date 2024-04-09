@@ -21,3 +21,4 @@ Robert Buj Gelonch, rbuj
 - Exercici 3
   - Descomprimeix el fitxer zip
   - map
+  - filter
