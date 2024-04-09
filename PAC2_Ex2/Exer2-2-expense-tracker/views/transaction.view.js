@@ -12,6 +12,9 @@ class TransactionView {
     this.form = document.getElementById('form');
     this.text = document.getElementById('text');
     this.amount = document.getElementById('amount');
+
+    this._initLocalListeners();
+    this._temporaryText = "";
   }
 
   get _amount() {
@@ -25,6 +28,15 @@ class TransactionView {
   _resetInput() {
     this.amount.value = "";
     this.text.value = "";
+  }
+
+  // Update temporary state
+  _initLocalListeners() {
+    this.transactionList.addEventListener('input', event => {
+      if (event.target.className === 'editable') {
+        this._temporaryText = event.target.innerText
+      }
+    })
   }
 
   displayTransactions(transactions) {
@@ -88,6 +100,16 @@ class TransactionView {
       if (event.target.className === "delete-btn") {
         const id = event.target.parentElement.id;
         handler(id);
+      }
+    });
+  }
+
+  bindEditTransaction(handler) {
+    this.transactionList.addEventListener("focusout", event => {
+      if (this._temporaryText) {
+        const id = event.target.parentElement.id;
+        handler(id, this._temporaryText);
+        this._temporaryText = "";
       }
     });
   }

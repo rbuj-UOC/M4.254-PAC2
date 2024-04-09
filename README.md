@@ -17,3 +17,4 @@ Robert Buj Gelonch, rbuj
   - Implementa la clase del servei
   - Implementa la clase de la vista
   - Implementa la clase del controlador
+  - Implementa l'edició
