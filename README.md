@@ -15,3 +15,4 @@ Robert Buj Gelonch, rbuj
   - Crea les carpetes i els fitxers necessaris
   - Implementa la clase del model
   - Implementa la clase del servei
+  - Implementa la clase de la vista
