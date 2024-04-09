@@ -9,3 +9,5 @@ Robert Buj Gelonch, rbuj
     exer1-d.js. Nota: Una funció async retorna una promesa, per
     aquest motiu es poden cridar alhora amb Promise.all per tal
     d'executar-ho en paral·lel
+- Exercici 2
+  - Descomprimeix el fitxer zip
