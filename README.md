@@ -24,3 +24,4 @@ Robert Buj Gelonch, rbuj
   - filter
   - reduce
   - every
+  - some

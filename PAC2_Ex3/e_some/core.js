@@ -2,28 +2,36 @@
 // array are numbers greater than 10.
 
 function anyGreaterThan10 (input) {
-  return input;
+  const greaterThan10 = (element) => element > 10;
+  return input.some(greaterThan10);
 };
 
 // Check to see if any of the strings in
 // the array is longer than 10 characters.
 
 function longWord (input) {
-  return input;
+  const longerThan10 = (text) => text.length > 10;
+  return input.some(longerThan10);
 };
 
 // Check to see if any of the elements in
 // the matrix are true.
 
 function truePossibilities (input) {
-  return input;
+  for (const vector of input) {
+    if (vector.some(element => element === true)) {
+      return true;
+    }
+  }
+  return false;
 };
 
 // Check to see if 'Lost' is in
 // the phrase (using some).
 
 function lostCarcosa (input) {
-  return input;
+  const containsLost = (text) => /Lost/.test(text);
+  return input.some(containsLost);
 };
 
 module.exports = {
