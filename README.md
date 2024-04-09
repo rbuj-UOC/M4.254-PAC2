@@ -25,3 +25,4 @@ Robert Buj Gelonch, rbuj
   - reduce
   - every
   - some
+  - zoo
