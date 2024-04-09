@@ -20,3 +20,4 @@ Robert Buj Gelonch, rbuj
   - Implementa l'edició
 - Exercici 3
   - Descomprimeix el fitxer zip
+  - map
