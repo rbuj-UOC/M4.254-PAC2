@@ -18,3 +18,5 @@ Robert Buj Gelonch, rbuj
   - Implementa la clase de la vista
   - Implementa la clase del controlador
   - Implementa l'edició
+- Exercici 3
+  - Descomprimeix el fitxer zip
