@@ -14,3 +14,4 @@ Robert Buj Gelonch, rbuj
   - Respon a la pregunta 2.a
   - Crea les carpetes i els fitxers necessaris
   - Implementa la clase del model
+  - Implementa la clase del servei
