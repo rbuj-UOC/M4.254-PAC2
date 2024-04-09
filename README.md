@@ -11,3 +11,4 @@ Robert Buj Gelonch, rbuj
     d'executar-ho en paral·lel
 - Exercici 2
   - Descomprimeix el fitxer zip
+  - Respon a la pregunta 2.a
