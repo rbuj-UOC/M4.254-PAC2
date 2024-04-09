@@ -23,3 +23,4 @@ Robert Buj Gelonch, rbuj
   - map
   - filter
   - reduce
+  - every
