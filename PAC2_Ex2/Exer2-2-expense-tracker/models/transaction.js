@@ -5,7 +5,6 @@
  */
 
 class Transaction {
-
   constructor({ text, amount }) {
     this.id = this.generateID();
     this.text = text;
@@ -14,5 +13,5 @@ class Transaction {
 
   generateID() {
     return Math.floor(Math.random() * 100000000);
-  };
+  }
 }

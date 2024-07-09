@@ -5,7 +5,7 @@
  */
 class TransactionService {
   constructor() {
-    this.transactions = (JSON.parse(localStorage.getItem("transactions")) || []).map(transaction => new Transaction(transaction));
+    this.transactions = (JSON.parse(localStorage.getItem('transactions')) || []).map((transaction) => new Transaction(transaction));
   }
 
   bindTransactionListChanged(callback) {
@@ -14,7 +14,7 @@ class TransactionService {
 
   _commit(transactions) {
     this.onTransactionListChanged(transactions);
-    localStorage.setItem("transactions", JSON.stringify(transactions));
+    localStorage.setItem('transactions', JSON.stringify(transactions));
   }
 
   addTransaction(text, amount) {
@@ -23,14 +23,7 @@ class TransactionService {
   }
 
   editTransaction(id, updatedText) {
-    this.transactions = this.transactions.map(transaction =>
-      transaction.id === Number(id)
-        ? new Transaction({
-          ...transaction,
-          text: updatedText
-        })
-        : transaction
-    );
+    this.transactions = this.transactions.map((transaction) => (transaction.id === Number(id) ? new Transaction({ ...transaction, text: updatedText }) : transaction));
     this._commit(this.transactions);
   }
 
@@ -38,5 +31,4 @@ class TransactionService {
     this.transactions = this.transactions.filter(({ id }) => id !== Number(_id));
     this._commit(this.transactions);
   }
-
 }

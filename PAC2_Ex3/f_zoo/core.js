@@ -9,7 +9,7 @@ function entryCalculator(entrants) {
 
 function schedule(dayName) {
   const twelveHourClock = (hour) => (hour < 12 ? `${hour}am` : `${hour - 12}pm`);
-  let h = dayName == null || dayName === undefined ? Object.entries(data.hours) : Object.entries(data.hours).filter((obj) => obj[0] === dayName);
+  const h = dayName == null || dayName === undefined ? Object.entries(data.hours) : Object.entries(data.hours).filter((obj) => obj[0] === dayName);
   return h
     .map(([day, { open, close }]) => {
       return [day, open === close ? 'CLOSED' : `Open from ${twelveHourClock(open)} until ${twelveHourClock(close)}`];
@@ -34,8 +34,8 @@ function animalMap(options) {
     }, {});
   }
   if (options instanceof Object) {
-    if (options.hasOwnProperty('includeNames') && options.includeNames) {
-      if (options.hasOwnProperty('sex') && (options.sex === 'male' || options.sex === 'female')) {
+    if (Object.prototype.hasOwnProperty.call(options, 'includeNames') && options.includeNames) {
+      if (Object.prototype.hasOwnProperty.call(options, 'sex') && (options.sex === 'male' || options.sex === 'female')) {
         ans = data.animals.reduce((acc, current) => {
           acc[current.location] = acc[current.location] ?? [];
           acc[current.location].push({ [current.name]: current.residents.filter((f) => f.sex === options.sex).map((a) => a.name) });
@@ -49,7 +49,7 @@ function animalMap(options) {
         }, {});
       }
     } else {
-      if (options.hasOwnProperty('sex') && (options.sex === 'male' || options.sex === 'female')) {
+      if (Object.prototype.hasOwnProperty.call(options, 'sex') && (options.sex === 'male' || options.sex === 'female')) {
         return data.animals.reduce((acc, current) => {
           const numElem = current.residents.filter((f) => f.sex === options.sex).reduce((acc) => acc + 1, 0);
           if (numElem > 0) {

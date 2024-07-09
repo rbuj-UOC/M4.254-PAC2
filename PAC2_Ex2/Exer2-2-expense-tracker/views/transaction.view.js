@@ -14,7 +14,7 @@ class TransactionView {
     this.amount = document.getElementById('amount');
 
     this._initLocalListeners();
-    this._temporaryText = "";
+    this._temporaryText = '';
   }
 
   get _amount() {
@@ -26,17 +26,17 @@ class TransactionView {
   }
 
   _resetInput() {
-    this.amount.value = "";
-    this.text.value = "";
+    this.amount.value = '';
+    this.text.value = '';
   }
 
   // Update temporary state
   _initLocalListeners() {
-    this.transactionList.addEventListener('input', event => {
+    this.transactionList.addEventListener('input', (event) => {
       if (event.target.className === 'editable') {
-        this._temporaryText = event.target.innerText
+        this._temporaryText = event.target.innerText;
       }
-    })
+    });
   }
 
   displayTransactions(transactions) {
@@ -48,7 +48,7 @@ class TransactionView {
     // Show default message
     if (transactions.length > 0) {
       // Create nodes
-      transactions.forEach(transaction => {
+      transactions.forEach((transaction) => {
         // Get sign
         const sign = transaction.amount < 0 ? '-' : '+';
         const item = document.createElement('li');
@@ -60,12 +60,12 @@ class TransactionView {
         this.transactionList.appendChild(item);
       });
       // update total, income, expense
-      const amounts = transactions.map(transaction => transaction.amount);
+      const amounts = transactions.map((transaction) => transaction.amount);
       this.updateValues(amounts);
     } else {
-      this.balance.innerText = "$0.00";
-      this.money_plus.innerText =  "$0.00";
-      this.money_minus.innerText =  "$0.00";
+      this.balance.innerText = '$0.00';
+      this.money_plus.innerText = '$0.00';
+      this.money_minus.innerText = '$0.00';
     }
 
     // Debugging
@@ -75,10 +75,10 @@ class TransactionView {
   updateValues(amounts) {
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
     const income = amounts
-      .filter(item => item > 0)
+      .filter((item) => item > 0)
       .reduce((acc, item) => (acc += item), 0)
       .toFixed(2);
-    const expense = (amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) * -1).toFixed(2);
+    const expense = (amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) * -1).toFixed(2);
 
     this.balance.innerText = `$${total}`;
     this.money_plus.innerText = `$${income}`;
@@ -86,7 +86,7 @@ class TransactionView {
   }
 
   bindAddTransaction(handler) {
-    this.form.addEventListener("submit", event => {
+    this.form.addEventListener('submit', (event) => {
       event.preventDefault();
       if (this._text && this._amount) {
         handler(this._text, this._amount);
@@ -96,8 +96,8 @@ class TransactionView {
   }
 
   bindDeleteTransaction(handler) {
-    this.transactionList.addEventListener("click", event => {
-      if (event.target.className === "delete-btn") {
+    this.transactionList.addEventListener('click', (event) => {
+      if (event.target.className === 'delete-btn') {
         const id = event.target.parentElement.id;
         handler(id);
       }
@@ -105,11 +105,11 @@ class TransactionView {
   }
 
   bindEditTransaction(handler) {
-    this.transactionList.addEventListener("focusout", event => {
+    this.transactionList.addEventListener('focusout', (event) => {
       if (this._temporaryText) {
         const id = event.target.parentElement.id;
         handler(id, this._temporaryText);
-        this._temporaryText = "";
+        this._temporaryText = '';
       }
     });
   }

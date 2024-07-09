@@ -10,6 +10,7 @@
    - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
    - [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
    - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 ## Configuració de Prettier
 1. Obrir les preferències de l'espai de treball a VS Code, en macOS: ⌘,
@@ -44,6 +45,11 @@ Afegir el connector al fitxer [.prettierrc.json](.prettierrc.json)
 | .NOM | Crear un div amb la classe NOM |
 | ELEMENT.NOM | Crear un ELEMENT (div, h1, p, ...) amb la classe NOM |
 | ELEMENT#ID | Crear un ELEMENT (div, h1, p, ...) amb l'identificador ID |
+
+## ESLint
+```
+npm init @eslint/config@latest
+```
 
 ## Dreceres de VS Code
 | Drecera | Acció |
