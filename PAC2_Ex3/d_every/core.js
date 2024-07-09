@@ -2,14 +2,16 @@
 // are even numbers.
 
 function allEven(input) {
-  return input.every(x=> { return x % 2 === 0 });
+  return input.every((x) => {
+    return x % 2 === 0;
+  });
 }
 
 // Check to see if all elements in an array
 // are of the same type.
 
 function allSameType(input) {
-  return input.every(element => typeof element === typeof input[0]);
+  return input.every((element) => typeof element === typeof input[0]);
 }
 
 // Check to see if every element in the matrix is
@@ -28,7 +30,7 @@ function positiveMatrix(input) {
 function allSameVowels(input) {
   return input.every((word) => {
     const vowels = word.match(/[aeiou]/gi);
-    return vowels.every(vowel => vowel === vowels[0]);
+    return vowels.every((vowel) => vowel === vowels[0]);
   });
 }
 

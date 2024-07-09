@@ -4,29 +4,24 @@ function entryCalculator(entrants) {
   if (entrants == null || entrants === undefined || !(entrants instanceof Object) || JSON.stringify(entrants) === '{}') {
     return 0;
   }
-  return Object.entries(entrants)
-    .reduce((accumulator, [key, value]) => accumulator + (data.prices[key] * value), 0);
+  return Object.entries(entrants).reduce((accumulator, [key, value]) => accumulator + data.prices[key] * value, 0);
 }
 
 function schedule(dayName) {
-  const twelveHourClock = (hour) => (hour < 12) ? `${hour}am` : `${hour - 12}pm`;
-  let h = (dayName == null || dayName === undefined) ?
-    Object.entries(data.hours) : Object.entries(data.hours).filter((obj) => obj[0] === dayName);
+  const twelveHourClock = (hour) => (hour < 12 ? `${hour}am` : `${hour - 12}pm`);
+  let h = dayName == null || dayName === undefined ? Object.entries(data.hours) : Object.entries(data.hours).filter((obj) => obj[0] === dayName);
   return h
     .map(([day, { open, close }]) => {
-      return [day, (open === close) ? "CLOSED" : `Open from ${twelveHourClock(open)} until ${twelveHourClock(close)}`];
+      return [day, open === close ? 'CLOSED' : `Open from ${twelveHourClock(open)} until ${twelveHourClock(close)}`];
     })
-    .reduce((o, [key, value]) => ({ ...o, [key]: value }), {})
+    .reduce((o, [key, value]) => ({ ...o, [key]: value }), {});
 }
 
 function animalCount(species) {
   if (species == null || species === undefined) {
-    return data.animals
-      .map((animal) => [animal.name, animal.residents.length])
-      .reduce((o, [key, value]) => ({ ...o, [key]: value }), {});
+    return data.animals.map((animal) => [animal.name, animal.residents.length]).reduce((o, [key, value]) => ({ ...o, [key]: value }), {});
   }
-  return data.animals.filter((animal) => animal.name === species)[0]
-    .residents.length;
+  return data.animals.filter((animal) => animal.name === species)[0].residents.length;
 }
 
 function animalMap(options) {
@@ -56,9 +51,7 @@ function animalMap(options) {
     } else {
       if (options.hasOwnProperty('sex') && (options.sex === 'male' || options.sex === 'female')) {
         return data.animals.reduce((acc, current) => {
-          const numElem = current.residents
-            .filter((f) => f.sex === options.sex)
-            .reduce((acc) => acc + 1, 0);
+          const numElem = current.residents.filter((f) => f.sex === options.sex).reduce((acc) => acc + 1, 0);
           if (numElem > 0) {
             acc[current.location] = acc[current.location] ?? [];
             acc[current.location].push(current.name);
@@ -150,12 +143,13 @@ function employeeByName(employeeName) {
 function managersForEmployee(idOrName) {
   let ans = {};
   if (idOrName != null && idOrName !== undefined) {
-    const findManagers = (ids) => data.employees
-      .filter((f) => ids.includes(f.id))
-      .reduce((acc, current) => {
-        acc.push(`${current.firstName} ${current.lastName}`);
-        return acc;
-      }, []);
+    const findManagers = (ids) =>
+      data.employees
+        .filter((f) => ids.includes(f.id))
+        .reduce((acc, current) => {
+          acc.push(`${current.firstName} ${current.lastName}`);
+          return acc;
+        }, []);
     ans = data.employees.filter((f) => f.id === idOrName);
     if (ans.length > 0) {
       ans = ans[0];
@@ -178,26 +172,25 @@ function managersForEmployee(idOrName) {
 }
 
 function employeeCoverage(idOrName) {
-  const findAnimals = (ids) => data.animals
-    .filter((f) => ids.includes(f.id))
-    .reduce((acc, current) => {
-      acc.push(current.name);
-      return acc;
-    }, []);
+  const findAnimals = (ids) =>
+    data.animals
+      .filter((f) => ids.includes(f.id))
+      .reduce((acc, current) => {
+        acc.push(current.name);
+        return acc;
+      }, []);
   let ans = {};
   if (idOrName == null || idOrName === undefined) {
-    return data.employees
-      .reduce((acc, current) => {
-        acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
-        return acc;
-      }, {})
+    return data.employees.reduce((acc, current) => {
+      acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
+      return acc;
+    }, {});
   }
   if (idOrName == null || idOrName === undefined) {
-    return data.employees
-      .reduce((acc, current) => {
-        acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
-        return acc;
-      }, {})
+    return data.employees.reduce((acc, current) => {
+      acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
+      return acc;
+    }, {});
   } else {
     ans = data.employees
       .filter((f) => f.id === idOrName)

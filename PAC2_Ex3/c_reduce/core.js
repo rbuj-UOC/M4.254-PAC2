@@ -21,7 +21,7 @@ function luckyNumbers(array) {
         return valorAnterior + ', ' + `${valorActual}`;
       }
     }
-  }, 'Your lucky numbers are: ')
+  }, 'Your lucky numbers are: ');
 }
 
 module.exports = {

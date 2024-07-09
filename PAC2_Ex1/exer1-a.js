@@ -3,7 +3,7 @@ const findOne = (list, { key, value }, { onSuccess, onError }) => {
   /* run the inner code below after a delay of two seconds */
   setTimeout(() => {
     /* check if the given values exist in the array of object instances. */
-    const element = list.find(element => element[key] === value);
+    const element = list.find((element) => element[key] === value);
     /* ternary sentence, equal to:
          if (element) // it found the element,
            onSuccess(element);

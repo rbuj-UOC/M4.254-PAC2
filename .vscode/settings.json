@@ -1,0 +1,8 @@
+{
+    "cSpell.language": "ca,en",
+    "emmet.triggerExpansionOnTab": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "html.format.wrapLineLength": 0
+}

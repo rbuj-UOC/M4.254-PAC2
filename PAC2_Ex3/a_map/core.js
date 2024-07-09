@@ -4,12 +4,12 @@ function multiplyBy10(array) {
 
 function shiftRight(array) {
   return array.map((element, index, wholeArray) => {
-    return (index === 0) ? array[wholeArray.length - 1] : array[index - 1];
+    return index === 0 ? array[wholeArray.length - 1] : array[index - 1];
   });
 }
 
 function onlyVowels(array) {
-  return array.map((text) => text.match(/[aeiou]/gi).join(""));
+  return array.map((text) => text.match(/[aeiou]/gi).join(''));
 }
 
 function doubleMatrix(array) {

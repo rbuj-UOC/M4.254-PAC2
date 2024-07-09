@@ -3,7 +3,7 @@ const resolveAfter2Seconds = (list, { key, value }) => {
     /* run the inner code below after a delay of two seconds */
     setTimeout(() => {
       /* check if the given values exist in the array of object instances. */
-      const element = list.find(element => element[key] === value);
+      const element = list.find((element) => element[key] === value);
       /* ternary sentence, equal to:
           if (element) // it found it, resolve the promise returning the element
             resolve(element);
@@ -13,7 +13,7 @@ const resolveAfter2Seconds = (list, { key, value }) => {
       element ? resolve(element['name']) : reject(new Error('ERROR: Element Not Found'));
     }, 2000);
   });
-}
+};
 
 const findOne = async (list, { key, value }) => {
   try {
@@ -25,7 +25,7 @@ const findOne = async (list, { key, value }) => {
     /* write the error message when it caught an error, ie the item doesn't exist */
     console.log(error.message);
   }
-}
+};
 
 /* Declare users variable as const, an array of two object instances.
    Each instance has the same attributes: name, rol  */
