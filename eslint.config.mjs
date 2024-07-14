@@ -4,7 +4,7 @@ import pluginJs from '@eslint/js';
 export default [
   { files: ['**/*.js'], languageOptions: { sourceType: 'commonjs' } },
   {
-    languageOptions: { globals: globals.browser },
+    languageOptions: { globals: globals.browser, mocha: 'true' },
     rules: {
       indent: ['error', 2],
       'prefer-const': 'error',

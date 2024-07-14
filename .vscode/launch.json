@@ -1,0 +1,152 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Ex1: index.html",
+      "file": "${workspaceFolder}/PAC2_Ex1/index.html"
+    },
+    {
+      "name": "Ex1: exer1-a.js",
+      "program": "${workspaceFolder}/PAC2_Ex1/exer1-a.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "name": "Ex1: exer1-b.js",
+      "program": "${workspaceFolder}/PAC2_Ex1/exer1-b.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "name": "Ex1: exer1-c.js",
+      "program": "${workspaceFolder}/PAC2_Ex1/exer1-c.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "name": "Ex1: exer1-d.js",
+      "program": "${workspaceFolder}/PAC2_Ex1/exer1-d.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Ex2: index.html",
+      "file": "${workspaceFolder}/PAC2_Ex2/Exer2-2-expense-tracker/index.html"
+    },
+    {
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/PAC2_Ex3/a_map"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "name": "Ex3: a_map",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/PAC2_Ex3/b_filter"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "name": "Ex3: b_filter",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/PAC2_Ex3/c_reduce"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "name": "Ex3: c_reduce",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/PAC2_Ex3/d_every"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "name": "Ex3: d_every",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/PAC2_Ex3/e_some"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "name": "Ex3: e_some",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/PAC2_Ex3/f_zoo"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "name": "Ex3: f_zoo",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    }
+  ]
+}
