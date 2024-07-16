@@ -1,4 +1,13 @@
 {
+  "name": "m4.254-pac2",
+  "version": "1.0.0",
+  "description": "PAC 2 de l'assignatura desenvolupament front-end amb frameworks JavaScript del màster de desenvolupament d'aplicacions web",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "Robert Buj <rbuj@uoc.edu>",
+  "license": "CC0-1.0",
   "devDependencies": {
     "@awmottaz/prettier-plugin-void-html": "^1.5.0",
     "@eslint/js": "^9.6.0",
