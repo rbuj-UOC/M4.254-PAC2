@@ -21,7 +21,7 @@ class TransactionController {
     this.onTransactionListChanged(this.service.transactions);
   }
 
-  onTransactionListChanged = transactions => {
+  onTransactionListChanged = (transactions) => {
     this.view.displayTransactions(transactions);
   };
 
@@ -33,8 +33,7 @@ class TransactionController {
     this.service.editTransaction(id, text);
   };
 
-  handleDeleteTransaction = id => {
+  handleDeleteTransaction = (id) => {
     this.service.deleteTransaction(id);
   };
-
 }

@@ -1,24 +1,24 @@
-// Este fichero no debes modificarlo en cuanto a la logica que aplica, 
-// si necesitas añadir/quitar algun console.log , cambiar declaraciones de variables, u otro tipo de depuración, no hay problema 
+// Este fichero no debes modificarlo en cuanto a la lógica que aplica,
+// si necesitas añadir/quitar algun console.log , cambiar declaraciones de variables, u otro tipo de depuración, no hay problema
 
 const assert = require('assert');
 const zoo = require('./core');
 const data = require('./data');
 
-describe('Zoo', function() {
-  describe('#entryCalculator()', function() {
-    it('returns 0 if no arguments passed in', function() {
+describe('Zoo', function () {
+  describe('#entryCalculator()', function () {
+    it('returns 0 if no arguments passed in', function () {
       //console.log(data.animals.map(console.log));
       var actual = zoo.entryCalculator();
       assert.equal(actual, 0);
     });
 
-    it('returns 0 if an empty object is passed in', function() {
+    it('returns 0 if an empty object is passed in', function () {
       var actual = zoo.entryCalculator({});
       assert.equal(actual, 0);
     });
 
-    it('returns the total price when given the number of adults, children, and seniors', function() {
+    it('returns the total price when given the number of adults, children, and seniors', function () {
       var entrants = { Adult: 2, Child: 3, Senior: 1 };
       var actual = zoo.entryCalculator(entrants);
 
@@ -26,8 +26,8 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#schedule()', function() {
-    it('with no parameters, returns a more human readable schedule', function() {
+  describe('#schedule()', function () {
+    it('with no parameters, returns a more human readable schedule', function () {
       var actual = zoo.schedule();
       var expected = {
         Tuesday: 'Open from 8am until 6pm',
@@ -42,7 +42,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('with a single day entered, returns only that day in a more human readable format', function() {
+    it('with a single day entered, returns only that day in a more human readable format', function () {
       var actual = zoo.schedule('Monday');
       var expected = {
         Monday: 'CLOSED'
@@ -59,8 +59,8 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#animalCount()', function() {
-    it('with no parameters, returns animals and their counts', function() {
+  describe('#animalCount()', function () {
+    it('with no parameters, returns animals and their counts', function () {
       var actual = zoo.animalCount();
       var expected = {
         lions: 4,
@@ -77,7 +77,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('with the name of an animal species, returns only the count', function() {
+    it('with the name of an animal species, returns only the count', function () {
       var actual = zoo.animalCount('lions');
       var expected = 4;
 
@@ -90,8 +90,8 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#animalMap()', function() {
-    it('with no parameters, returns the animals categorized by location', function() {
+  describe('#animalMap()', function () {
+    it('with no parameters, returns the animals categorized by location', function () {
       var actual = zoo.animalMap();
       var expected = {
         NE: ['lions', 'giraffes'],
@@ -103,7 +103,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('with specified options, returns names of animals', function() {
+    it('with specified options, returns names of animals', function () {
       var options = { includeNames: true };
       var actual = zoo.animalMap(options);
       var expected = {
@@ -128,7 +128,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('with specified options, returns names of fe/male animals', function() {
+    it('with specified options, returns names of fe/male animals', function () {
       var options = { includeNames: true, sex: 'female' };
       var actual = zoo.animalMap(options);
       var expected = {
@@ -145,7 +145,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('will only return gender specific information if includeNames is set', function() {
+    it('will only return gender specific information if includeNames is set', function () {
       var options = { sex: 'female' };
       var actual = zoo.animalMap(options)['NE'][0];
       var expected = 'lions';
@@ -154,20 +154,20 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#animalPopularity()', function() {
-    it('with no parameters, returns animals sorted into groups by popularity', function() {
+  describe('#animalPopularity()', function () {
+    it('with no parameters, returns animals sorted into groups by popularity', function () {
       var actual = zoo.animalPopularity();
       var expected = {
-        '2': ['frogs'],
-        '3': ['snakes'],
-        '4': ['lions', 'penguins', 'otters', 'giraffes'],
-        '5': ['tigers', 'bears', 'elephants']
+        2: ['frogs'],
+        3: ['snakes'],
+        4: ['lions', 'penguins', 'otters', 'giraffes'],
+        5: ['tigers', 'bears', 'elephants']
       };
 
       assert.deepEqual(actual, expected);
     });
 
-    it('with a single rating parameter, returns those animals that match the rating', function() {
+    it('with a single rating parameter, returns those animals that match the rating', function () {
       var actual = zoo.animalPopularity(3);
       var expected = ['snakes'];
 
@@ -175,15 +175,15 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#animalsByIds()', function() {
-    it('with no parameters, returns an empty array', function() {
+  describe('#animalsByIds()', function () {
+    it('with no parameters, returns an empty array', function () {
       var actual = zoo.animalsByIds();
       var expected = [];
 
       assert.deepEqual(actual, expected);
     });
 
-    it('with a single id, returns the animals with that id', function() {
+    it('with a single id, returns the animals with that id', function () {
       var actual = zoo.animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce');
       var expected = [
         {
@@ -203,7 +203,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('with an array of ids, returns those animals that have one of the ids', function() {
+    it('with an array of ids, returns those animals that have one of the ids', function () {
       var actual = zoo.animalsByIds([
         '0938aa23-f153-4937-9f88-4858b24d6bce',
         'e8481c1d-42ea-4610-8e11-1752cfc05a46'
@@ -237,15 +237,15 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#animalByName()', function() {
-    it('with no parameters, returns an empty object', function() {
+  describe('#animalByName()', function () {
+    it('with no parameters, returns an empty object', function () {
       var actual = zoo.animalByName();
       var expected = {};
 
       assert.deepEqual(actual, expected);
     });
 
-    it("with a name, returns the animal's resident object and animal species", function() {
+    it("with a name, returns the animal's resident object and animal species", function () {
       var actual = zoo.animalByName('Clay');
       var expected = {
         name: 'Clay',
@@ -258,15 +258,15 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#employeesByIds()', function() {
-    it('with no parameters, returns an empty array', function() {
+  describe('#employeesByIds()', function () {
+    it('with no parameters, returns an empty array', function () {
       var actual = zoo.employeesByIds();
       var expected = [];
 
       assert.deepEqual(actual, expected);
     });
 
-    it('with a single id, returns the employee with that id', function() {
+    it('with a single id, returns the employee with that id', function () {
       var actual = zoo.employeesByIds('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1');
       var expected = [
         {
@@ -287,7 +287,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('with an array of ids, returns the employees with those ids', function() {
+    it('with an array of ids, returns the employees with those ids', function () {
       var actual = zoo.employeesByIds([
         'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1',
         '0e7b460e-acf4-4e17-bcb3-ee472265db83'
@@ -324,15 +324,15 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#employeeByName()', function() {
-    it('with no parameters, returns an empty object', function() {
+  describe('#employeeByName()', function () {
+    it('with no parameters, returns an empty object', function () {
       var actual = zoo.employeeByName();
       var expected = {};
 
       assert.deepEqual(actual, expected);
     });
 
-    it('when provided with a first name, returns the employee object', function() {
+    it('when provided with a first name, returns the employee object', function () {
       var actual = zoo.employeeByName('Emery');
       var expected = {
         id: 'b0dc644a-5335-489b-8a2c-4e086c7819a2',
@@ -349,7 +349,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it('when provided with a last name, returns the employee object', function() {
+    it('when provided with a last name, returns the employee object', function () {
       var actual = zoo.employeeByName('Wishart');
       var expected = {
         id: '56d43ba3-a5a7-40f6-8dd7-cbb05082383f',
@@ -369,8 +369,8 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#managersForEmployee()', function() {
-    it("with an employee's id, returns the names of that employee's managers", function() {
+  describe('#managersForEmployee()', function () {
+    it("with an employee's id, returns the names of that employee's managers", function () {
       var actual = zoo.managersForEmployee(
         'b0dc644a-5335-489b-8a2c-4e086c7819a2'
       );
@@ -389,7 +389,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it("with an employee's first name, returns the names of that employee's managers", function() {
+    it("with an employee's first name, returns the names of that employee's managers", function () {
       var actual = zoo.managersForEmployee('Ardith');
       var expected = {
         id: 'c1f50212-35a6-4ecd-8223-f835538526c2',
@@ -405,7 +405,7 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it("with an employee's last name, returns the names of that employee's managers", function() {
+    it("with an employee's last name, returns the names of that employee's managers", function () {
       var actual = zoo.managersForEmployee('Wishart');
       var expected = {
         id: '56d43ba3-a5a7-40f6-8dd7-cbb05082383f',
@@ -422,8 +422,8 @@ describe('Zoo', function() {
     });
   });
 
-  describe('#employeeCoverage()', function() {
-    it("with no parameters, returns a list of employees and the animals they're responsible for", function() {
+  describe('#employeeCoverage()', function () {
+    it("with no parameters, returns a list of employees and the animals they're responsible for", function () {
       var actual = zoo.employeeCoverage();
       var expected = {
         'Nigel Nelson': ['lions', 'tigers'],
@@ -439,23 +439,21 @@ describe('Zoo', function() {
       assert.deepEqual(actual, expected);
     });
 
-    it("with an employee's id, returns the animals that employee is responsible for", function() {
-      var actual = zoo.employeeCoverage(
-        '4b40a139-d4dc-4f09-822d-ec25e819a5ad'
-      );
+    it("with an employee's id, returns the animals that employee is responsible for", function () {
+      var actual = zoo.employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad');
       var expected = { 'Sharonda Spry': ['otters', 'frogs'] };
 
       assert.deepEqual(actual, expected);
     });
 
-    it("with an employee's first name, returns the animals that employee is responsible for", function() {
+    it("with an employee's first name, returns the animals that employee is responsible for", function () {
       var actual = zoo.employeeCoverage('Stephanie');
       var expected = { 'Stephanie Strauss': ['giraffes'] };
 
       assert.deepEqual(actual, expected);
     });
 
-    it("with an employee's last name, returns the animals that employee is responsible for", function() {
+    it("with an employee's last name, returns the animals that employee is responsible for", function () {
       var actual = zoo.employeeCoverage('Azevado');
       var expected = { 'Ardith Azevado': ['tigers', 'bears'] };
 

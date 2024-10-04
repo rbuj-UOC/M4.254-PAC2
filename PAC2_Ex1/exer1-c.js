@@ -10,7 +10,9 @@ const resolveAfter2Seconds = (list, { key, value }) => {
           else // it didn't find it, rejects the promise setting the rejection reason
             reject(new Error('ERROR: Element Not Found'));
       */
-      element ? resolve(element['name']) : reject(new Error('ERROR: Element Not Found'));
+      element
+        ? resolve(element['name'])
+        : reject(new Error('ERROR: Element Not Found'));
     }, 2000);
   });
 };

@@ -1,8 +1,8 @@
-const assert = require("assert");
-const core = require("./core");
+const assert = require('assert');
+const core = require('./core');
 
-describe("core", function() {
-  it("#anyGreaterThan10", function() {
+describe('core', function () {
+  it('#anyGreaterThan10', function () {
     const goodInput = [8, 9, 10, 11];
     assert.equal(core.anyGreaterThan10(goodInput), true);
 
@@ -10,15 +10,15 @@ describe("core", function() {
     assert.equal(core.anyGreaterThan10(badInput), false);
   });
 
-  it("#longWord", function() {
-    const goodInput = ["democracy", "aristocracy"];
+  it('#longWord', function () {
+    const goodInput = ['democracy', 'aristocracy'];
     assert.equal(core.longWord(goodInput), true);
 
-    const badInput = ["democracy", "republic"];
+    const badInput = ['democracy', 'republic'];
     assert.equal(core.longWord(badInput), false);
   });
 
-  it("#truePossibilities", function() {
+  it('#truePossibilities', function () {
     const goodInput = [
       [false, false, false],
       [false, false, false],
@@ -34,20 +34,20 @@ describe("core", function() {
     assert.equal(core.truePossibilities(badInput), false);
   });
 
-  it("#lostCarcosa", function() {
+  it('#lostCarcosa', function () {
     const goodInput = [
-      "Strange is the night where black stars rise,",
-      "And strange moons circle through the skies,",
-      "But stranger still is",
-      "Lost Carcosa."
+      'Strange is the night where black stars rise,',
+      'And strange moons circle through the skies,',
+      'But stranger still is',
+      'Lost Carcosa.'
     ];
     assert.equal(core.lostCarcosa(goodInput), true);
 
     const badInput = [
-      "Along the shore the cloud waves break,",
-      "The twin suns sink behind the lake,",
-      "The shadows lengthen",
-      "In Carcosa."
+      'Along the shore the cloud waves break,',
+      'The twin suns sink behind the lake,',
+      'The shadows lengthen',
+      'In Carcosa.'
     ];
     assert.equal(core.lostCarcosa(badInput), false);
   });

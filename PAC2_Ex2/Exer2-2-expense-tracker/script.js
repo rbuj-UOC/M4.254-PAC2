@@ -63,10 +63,10 @@ function addTransactionDOM(transaction) {
 
   item.innerHTML = `
     ${transaction.text} <span>${sign}${Math.abs(
-    transaction.amount
-  )}</span> <button class="delete-btn" onclick="removeTransaction(${
-    transaction.id
-  })">x</button>
+      transaction.amount
+    )}</span> <button class="delete-btn" onclick="removeTransaction(${
+      transaction.id
+    })">x</button>
   `;
 
   list.appendChild(item);
@@ -74,17 +74,17 @@ function addTransactionDOM(transaction) {
 
 // Update the balance, income and expense
 function updateValues() {
-  const amounts = transactions.map(transaction => transaction.amount);
+  const amounts = transactions.map((transaction) => transaction.amount);
 
   const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
   const income = amounts
-    .filter(item => item > 0)
+    .filter((item) => item > 0)
     .reduce((acc, item) => (acc += item), 0)
     .toFixed(2);
 
   const expense = (
-    amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
+    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
     -1
   ).toFixed(2);
 
@@ -95,7 +95,7 @@ function updateValues() {
 
 // Remove transaction by ID
 function removeTransaction(id) {
-  transactions = transactions.filter(transaction => transaction.id !== id);
+  transactions = transactions.filter((transaction) => transaction.id !== id);
 
   updateLocalStorage();
 

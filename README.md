@@ -23,7 +23,6 @@ Afegir les opcions de formatació al fitxer [.prettierrc.json](.prettierrc.json)
 ```json
 {
   "trailingComma": "none",
-  "printWidth": 1000,
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true
@@ -56,7 +55,7 @@ npm init @eslint/config@latest
 ### eslint-config-prettier
 
 ```
-npm install --save-dev eslint-config-prettier
+npm install prettier-eslint eslint-config-prettier eslint-plugin-prettier --save-dev
 ```
 
 Editar el fitxer [eslint.config.mjs](./eslint.config.mjs)

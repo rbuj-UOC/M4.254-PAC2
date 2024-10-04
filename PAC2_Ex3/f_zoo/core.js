@@ -1,27 +1,47 @@
 const data = require('./data');
 
 function entryCalculator(entrants) {
-  if (entrants == null || entrants === undefined || !(entrants instanceof Object) || JSON.stringify(entrants) === '{}') {
+  if (
+    entrants == null ||
+    entrants === undefined ||
+    !(entrants instanceof Object) ||
+    JSON.stringify(entrants) === '{}'
+  ) {
     return 0;
   }
-  return Object.entries(entrants).reduce((accumulator, [key, value]) => accumulator + data.prices[key] * value, 0);
+  return Object.entries(entrants).reduce(
+    (accumulator, [key, value]) => accumulator + data.prices[key] * value,
+    0
+  );
 }
 
 function schedule(dayName) {
-  const twelveHourClock = (hour) => (hour < 12 ? `${hour}am` : `${hour - 12}pm`);
-  const h = dayName == null || dayName === undefined ? Object.entries(data.hours) : Object.entries(data.hours).filter((obj) => obj[0] === dayName);
+  const twelveHourClock = (hour) =>
+    hour < 12 ? `${hour}am` : `${hour - 12}pm`;
+  const h =
+    dayName == null || dayName === undefined
+      ? Object.entries(data.hours)
+      : Object.entries(data.hours).filter((obj) => obj[0] === dayName);
   return h
     .map(([day, { open, close }]) => {
-      return [day, open === close ? 'CLOSED' : `Open from ${twelveHourClock(open)} until ${twelveHourClock(close)}`];
+      return [
+        day,
+        open === close
+          ? 'CLOSED'
+          : `Open from ${twelveHourClock(open)} until ${twelveHourClock(close)}`
+      ];
     })
     .reduce((o, [key, value]) => ({ ...o, [key]: value }), {});
 }
 
 function animalCount(species) {
   if (species == null || species === undefined) {
-    return data.animals.map((animal) => [animal.name, animal.residents.length]).reduce((o, [key, value]) => ({ ...o, [key]: value }), {});
+    return data.animals
+      .map((animal) => [animal.name, animal.residents.length])
+      .reduce((o, [key, value]) => ({ ...o, [key]: value }), {});
   }
-  return data.animals.filter((animal) => animal.name === species)[0].residents.length;
+  return data.animals.filter((animal) => animal.name === species)[0].residents
+    .length;
 }
 
 function animalMap(options) {
@@ -34,24 +54,41 @@ function animalMap(options) {
     }, {});
   }
   if (options instanceof Object) {
-    if (Object.prototype.hasOwnProperty.call(options, 'includeNames') && options.includeNames) {
-      if (Object.prototype.hasOwnProperty.call(options, 'sex') && (options.sex === 'male' || options.sex === 'female')) {
+    if (
+      Object.prototype.hasOwnProperty.call(options, 'includeNames') &&
+      options.includeNames
+    ) {
+      if (
+        Object.prototype.hasOwnProperty.call(options, 'sex') &&
+        (options.sex === 'male' || options.sex === 'female')
+      ) {
         ans = data.animals.reduce((acc, current) => {
           acc[current.location] = acc[current.location] ?? [];
-          acc[current.location].push({ [current.name]: current.residents.filter((f) => f.sex === options.sex).map((a) => a.name) });
+          acc[current.location].push({
+            [current.name]: current.residents
+              .filter((f) => f.sex === options.sex)
+              .map((a) => a.name)
+          });
           return acc;
         }, {});
       } else {
         ans = data.animals.reduce((acc, current) => {
           acc[current.location] = acc[current.location] ?? [];
-          acc[current.location].push({ [current.name]: current.residents.map((a) => a.name) });
+          acc[current.location].push({
+            [current.name]: current.residents.map((a) => a.name)
+          });
           return acc;
         }, {});
       }
     } else {
-      if (Object.prototype.hasOwnProperty.call(options, 'sex') && (options.sex === 'male' || options.sex === 'female')) {
+      if (
+        Object.prototype.hasOwnProperty.call(options, 'sex') &&
+        (options.sex === 'male' || options.sex === 'female')
+      ) {
         return data.animals.reduce((acc, current) => {
-          const numElem = current.residents.filter((f) => f.sex === options.sex).reduce((acc) => acc + 1, 0);
+          const numElem = current.residents
+            .filter((f) => f.sex === options.sex)
+            .reduce((acc) => acc + 1, 0);
           if (numElem > 0) {
             acc[current.location] = acc[current.location] ?? [];
             acc[current.location].push(current.name);
@@ -98,7 +135,11 @@ function animalByName(animalName) {
   if (animalName == null || animalName === undefined) {
     return ans;
   }
-  if (data.animals.map((a) => a.residents.some((r) => r.name === animalName)).some((r) => r === true)) {
+  if (
+    data.animals
+      .map((a) => a.residents.some((r) => r.name === animalName))
+      .some((r) => r === true)
+  ) {
     ans = data.animals
       .filter((a) => a.residents.some((r) => r.name === animalName))
       .map(({ name, residents }) => {
@@ -182,27 +223,35 @@ function employeeCoverage(idOrName) {
   let ans = {};
   if (idOrName == null || idOrName === undefined) {
     return data.employees.reduce((acc, current) => {
-      acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
+      acc[`${current.firstName} ${current.lastName}`] = findAnimals(
+        current.responsibleFor
+      );
       return acc;
     }, {});
   }
   if (idOrName == null || idOrName === undefined) {
     return data.employees.reduce((acc, current) => {
-      acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
+      acc[`${current.firstName} ${current.lastName}`] = findAnimals(
+        current.responsibleFor
+      );
       return acc;
     }, {});
   } else {
     ans = data.employees
       .filter((f) => f.id === idOrName)
       .reduce((acc, current) => {
-        acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
+        acc[`${current.firstName} ${current.lastName}`] = findAnimals(
+          current.responsibleFor
+        );
         return acc;
       }, {});
     if (JSON.stringify(ans) === '{}') {
       ans = data.employees
         .filter((f) => f.firstName === idOrName)
         .reduce((acc, current) => {
-          acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
+          acc[`${current.firstName} ${current.lastName}`] = findAnimals(
+            current.responsibleFor
+          );
           return acc;
         }, {});
     }
@@ -210,7 +259,9 @@ function employeeCoverage(idOrName) {
       ans = data.employees
         .filter((f) => f.lastName === idOrName)
         .reduce((acc, current) => {
-          acc[`${current.firstName} ${current.lastName}`] = findAnimals(current.responsibleFor);
+          acc[`${current.firstName} ${current.lastName}`] = findAnimals(
+            current.responsibleFor
+          );
           return acc;
         }, {});
     }

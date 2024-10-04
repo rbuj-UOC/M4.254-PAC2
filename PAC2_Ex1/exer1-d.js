@@ -10,7 +10,9 @@ const resolveAfter2Seconds = (list, { key, value }) => {
           else // it didn't find it, rejects the promise setting the rejection reason
             reject(new Error('ERROR: Element Not Found'));
       */
-      element ? resolve(element['name']) : reject(new Error('ERROR: Element Not Found'));
+      element
+        ? resolve(element['name'])
+        : reject(new Error('ERROR: Element Not Found'));
     }, 2000);
   });
 };
@@ -47,7 +49,10 @@ console.log('findOne success');
   the item exists in the array. In contrast, the second promise will fail
   because the item doesn't exits.
 */
-Promise.all([findOne(users, { key: 'name', value: 'Carlos' }), findOne(users, { key: 'name', value: 'Fermin' })]);
+Promise.all([
+  findOne(users, { key: 'name', value: 'Carlos' }),
+  findOne(users, { key: 'name', value: 'Fermin' })
+]);
 
 /* print `findOne error` on the console */
 console.log('findOne error');

@@ -1,2 +1,4 @@
-const app = new TransactionController(new TransactionService(), new TransactionView());
-
+const app = new TransactionController(
+  new TransactionService(),
+  new TransactionView()
+);

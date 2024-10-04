@@ -3,11 +3,16 @@ function sum(array) {
 }
 
 function productAll(array) {
-  return array.flat().reduce((acumulador, valorActual) => acumulador * valorActual, 1);
+  return array
+    .flat()
+    .reduce((acumulador, valorActual) => acumulador * valorActual, 1);
 }
 
 function objectify(array) {
-  return array.reduce((acumulador, [propietat, valor]) => ({ ...acumulador, [propietat]: valor }), {});
+  return array.reduce(
+    (acumulador, [propietat, valor]) => ({ ...acumulador, [propietat]: valor }),
+    {}
+  );
 }
 
 function luckyNumbers(array) {
